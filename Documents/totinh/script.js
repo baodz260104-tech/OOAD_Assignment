@@ -1052,6 +1052,42 @@ function initUI() {
             startLoveCounter();
         });
     });
+
+    // Khởi động bong bóng trái tim bay trên màn hình mở đầu
+    createIntroHearts();
+
+    // Hàm phụ tạo các bong bóng trái tim bay trên màn hình mở đầu
+    function createIntroHearts() {
+        const heartsContainer = document.getElementById('intro-screen-hearts');
+        if (!heartsContainer) return;
+        
+        const heartIcons = ['❤️', '💖', '💝', '💕', '💗', '💓'];
+        
+        // Tạo 25 hạt trái tim ngẫu nhiên
+        for (let i = 0; i < 25; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'intro-floating-heart';
+            heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            
+            // Tọa độ ngang ngẫu nhiên
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Kích thước ngẫu nhiên (từ 15px đến 35px)
+            const size = 15 + Math.random() * 20;
+            heart.style.fontSize = size + 'px';
+            
+            // Thời gian chạy và thời gian trễ ngẫu nhiên
+            const duration = 5 + Math.random() * 4;
+            const delay = Math.random() * 6;
+            heart.style.animationDuration = duration + 's';
+            heart.style.animationDelay = delay + 's';
+            
+            // Độ mờ ngẫu nhiên
+            heart.style.opacity = 0.2 + Math.random() * 0.5;
+            
+            heartsContainer.appendChild(heart);
+        }
+    }
 }
 
 // 7. BỘ ĐẾM NGÀY YÊU NHAU (Love Counter)

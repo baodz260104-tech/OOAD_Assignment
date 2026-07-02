@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <!-- Nhúng thư viện icon FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
     <!-- Hình nền của Cảnh 5 -->
@@ -45,17 +45,27 @@
 
     <!-- Màn hình chào mừng mở đầu (Intro Screen / Hộp Quà Dễ Thương) -->
     <div class="intro-screen" id="intro-screen">
+        <!-- Các hạt bong bóng mờ ảo (Bokeh) trong nền -->
+        <div class="intro-bg-glow glow-1"></div>
+        <div class="intro-bg-glow glow-2"></div>
+        <div class="intro-bg-glow glow-3"></div>
+        
+        <!-- Container chứa các trái tim bay lơ lửng -->
+        <div class="intro-screen-hearts" id="intro-screen-hearts"></div>
+        
         <div class="gift-wrapper">
-            <div class="gift-box" id="gift-box">
-                <div class="gift-lid">
-                    <div class="gift-bow"></div>
+            <div class="gift-card">
+                <div class="gift-box" id="gift-box">
+                    <div class="gift-lid">
+                        <div class="gift-bow"></div>
+                    </div>
+                    <div class="gift-body">
+                        <div class="gift-ribbon-vertical"></div>
+                        <div class="gift-ribbon-horizontal"></div>
+                    </div>
                 </div>
-                <div class="gift-body">
-                    <div class="gift-ribbon-vertical"></div>
-                    <div class="gift-ribbon-horizontal"></div>
-                </div>
+                <p class="intro-hint">Bấm vào hộp quà để nhận điều bất ngờ nhé! 🎁✨</p>
             </div>
-            <p class="intro-hint">Bấm vào hộp quà để nhận điều bất ngờ nhé! 🎁✨</p>
         </div>
     </div>
 
@@ -98,7 +108,7 @@
 
     <!-- Nhúng thư viện Three.js bản ổn định -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js?v=11"></script>
+    <script src="script.js?v=12"></script>
 </body>
 </html>
 
