@@ -8,9 +8,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <!-- Nhúng thư viện icon FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
+    <!-- Màn hình Loading khi bấm Đồng ý -->
+    <div id="love-loader-screen" class="love-loader-screen hidden">
+        <div class="loader-content">
+            <div class="loader-pins">
+                <div class="loader-pin pin-start">❤️</div>
+                <div class="loader-pin pin-middle">💕</div>
+                <div class="loader-pin pin-end">
+                    <div class="heart-bubble-icon">💖</div>
+                </div>
+            </div>
+            <div class="loader-bar">
+                <div id="loader-bar-fill" class="loader-bar-fill"></div>
+                <span id="loader-text" class="loader-text">0%</span>
+            </div>
+            <p class="loader-hint">LOADING LOVE . . .</p>
+        </div>
+    </div>
+
+    <!-- Màn hình Xe van chở tình yêu chạy -->
+    <div id="love-drive-screen" class="love-drive-screen hidden">
+        <div class="drive-area">
+            <div class="van-container" id="van-container">
+                <div class="dialog-bubble" id="dialog-bubble">Đang chở tình yêu đến đây... 🌸</div>
+                <div class="van-body">
+                    <div class="van-top">
+                        <div class="van-window front"></div>
+                        <div class="van-window back"></div>
+                    </div>
+                    <div class="van-bottom">
+                        <div class="van-light"></div>
+                        <div class="van-bumper"></div>
+                    </div>
+                </div>
+                <div class="van-wheels">
+                    <div class="wheel wheel-left">
+                        <div class="wheel-inner"></div>
+                    </div>
+                    <div class="wheel wheel-right">
+                        <div class="wheel-inner"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="exhaust-particles" id="exhaust-particles"></div>
+            <div class="road-line"></div>
+        </div>
+    </div>
+
     <!-- Hình nền của Cảnh 5 -->
     <div class="scene5-bg" id="scene5-bg"></div>
 
@@ -108,7 +155,7 @@
 
     <!-- Nhúng thư viện Three.js bản ổn định -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js?v=12"></script>
+    <script src="script.js?v=13"></script>
 </body>
 </html>
 

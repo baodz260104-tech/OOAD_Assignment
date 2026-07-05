@@ -1043,15 +1043,131 @@ function initUI() {
         resetNoButton();
         
         // Đổi biểu tượng trái tim thành hiệu ứng lung linh phóng to
-        document.querySelector('.glowing-heart-icon').style.transform = 'scale(1.5)';
+        const glowHeart = document.querySelector('.glowing-heart-icon');
+        if (glowHeart) glowHeart.style.transform = 'scale(1.5)';
         
-        // Bắt đầu chạy bức thư tỏ tình gõ chữ
-        startTypewriter(() => {
-            // Khi gõ xong thư mới hiển thị thông điệp thành công và khởi động bộ đếm ngày bên nhau
-            successMessage.classList.remove('hidden');
-            startLoveCounter();
-        });
+        // Ẩn hộp thư tỏ tình để chạy màn hình loading và xe van trước
+        confessionOverlay.classList.remove('active');
+        
+        // Kích hoạt màn hình loading
+        runLoveLoader();
     });
+
+    // Chạy màn hình Loading và hoạt ảnh Xe van chở tình yêu
+    function runLoveLoader() {
+        const loaderScreen = document.getElementById('love-loader-screen');
+        const loaderBarFill = document.getElementById('loader-bar-fill');
+        const loaderText = document.getElementById('loader-text');
+        
+        // Reset loader
+        loaderBarFill.style.width = '0%';
+        loaderText.innerText = '0%';
+        loaderScreen.classList.remove('hidden');
+        loaderScreen.style.opacity = '1';
+        
+        let percent = 0;
+        const interval = setInterval(() => {
+            percent += 1;
+            loaderBarFill.style.width = percent + '%';
+            loaderText.innerText = percent + '%';
+            
+            if (percent >= 100) {
+                clearInterval(interval);
+                loaderText.innerText = 'Ok rùi đó :)';
+                
+                // Đợi 1 giây rồi bắt đầu chạy xe van
+                setTimeout(() => {
+                    loaderScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loaderScreen.classList.add('hidden');
+                        runVanDrive();
+                    }, 500);
+                }, 1000);
+            }
+        }, 30); // 100 * 30ms = 3 giây loading
+    }
+
+    function runVanDrive() {
+        const driveScreen = document.getElementById('love-drive-screen');
+        const vanContainer = document.getElementById('van-container');
+        const dialogBubble = document.getElementById('dialog-bubble');
+        const exhaustParticles = document.getElementById('exhaust-particles');
+        
+        // Reset xe van
+        vanContainer.style.left = '-220px';
+        dialogBubble.style.opacity = '0';
+        exhaustParticles.innerHTML = '';
+        
+        driveScreen.classList.remove('hidden');
+        driveScreen.style.opacity = '1';
+        
+        // Cho xe chạy vào
+        setTimeout(() => {
+            // Hiện bong bóng thoại trên xe van sau 0.8 giây
+            setTimeout(() => {
+                dialogBubble.style.opacity = '1';
+            }, 800);
+            
+            // Bắt đầu tạo khói xe hình trái tim
+            let exhaustInterval = setInterval(() => {
+                createExhaustHeart();
+            }, 100);
+            
+            // Chạy xe van từ trái sang phải
+            vanContainer.style.transition = 'left 3.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            vanContainer.style.left = '100vw'; // Xe chạy qua mép phải màn hình
+            
+            // Sau khi chạy xong xe van
+            setTimeout(() => {
+                clearInterval(exhaustInterval);
+                driveScreen.style.opacity = '0';
+                setTimeout(() => {
+                    driveScreen.classList.add('hidden');
+                    vanContainer.style.transition = ''; // reset transition
+                    
+                    // Hiển thị lại thiệp tỏ tình và bắt đầu gõ chữ bức thư tình như cũ
+                    confessionOverlay.classList.add('active');
+                    
+                    startTypewriter(() => {
+                        // Hiện thông điệp thành công và đếm ngày yêu nhau
+                        successMessage.classList.remove('hidden');
+                        startLoveCounter();
+                    });
+                }, 500);
+            }, 3500); // 3.5s khớp với transition
+        }, 100);
+        
+        // Hàm tạo hạt khói trái tim
+        function createExhaustHeart() {
+            const vanRect = vanContainer.getBoundingClientRect();
+            // Ống xả ở góc dưới bên trái của xe
+            const x = vanRect.left + 15;
+            const y = vanRect.top + 70;
+            
+            // Chỉ tạo khói khi xe đang ở trên màn hình
+            if (x < 0 || x > window.innerWidth) return;
+            
+            const heart = document.createElement('div');
+            heart.className = 'exhaust-heart';
+            
+            const heartIcons = ['❤️', '💖', '💝', '💕', '💗', '💓'];
+            heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            
+            // Random kích thước hạt nhẹ
+            const size = 12 + Math.random() * 8;
+            heart.style.fontSize = size + 'px';
+            
+            exhaustParticles.appendChild(heart);
+            
+            // Tự động xóa hạt khói sau 1.2s khi hoạt ảnh kết thúc
+            setTimeout(() => {
+                heart.remove();
+            }, 1200);
+        }
+    }
 
     // Khởi động bong bóng trái tim bay trên màn hình mở đầu
     createIntroHearts();
