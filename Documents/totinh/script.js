@@ -1129,9 +1129,8 @@ function initUI() {
                     confessionOverlay.classList.add('active');
                     
                     startTypewriter(() => {
-                        // Hiện thông điệp thành công và đếm ngày yêu nhau
+                        // Hiện thông điệp thành công
                         successMessage.classList.remove('hidden');
-                        startLoveCounter();
                     });
                 }, 500);
             }, 3500); // 3.5s khớp với transition
@@ -1207,26 +1206,6 @@ function initUI() {
 }
 
 // 7. BỘ ĐẾM NGÀY YÊU NHAU (Love Counter)
-function startLoveCounter() {
-    const counterElement = document.getElementById('love-date-counter');
-    
-    function updateCounter() {
-        const startDate = new Date(CONFIG.loveStartDate);
-        const now = new Date();
-        const diff = now - startDate;
-        
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / 1000 / 60) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-        
-        counterElement.innerHTML = `Đã yêu thương nhau được:<br>${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây 💖`;
-    }
-    
-    updateCounter();
-    setInterval(updateCounter, 1000);
-}
-
 /* =========================================================================
    CÁC HÀM TIỆN ÍCH HỆ THỐNG
    ========================================================================= */

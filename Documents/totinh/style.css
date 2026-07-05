@@ -981,123 +981,21 @@ body, html {
     100% { transform: translateY(-3px); }
 }
 
-.van-body {
+.van-svg {
     width: 100%;
-    height: 80px;
-    position: relative;
+    height: 100%;
+    filter: drop-shadow(0 4px 8px rgba(255, 77, 109, 0.2));
 }
 
-/* Phần trên xe van (Màu trắng) */
-.van-top {
-    width: 100%;
-    height: 40px;
-    background: #ffffff;
-    border-radius: 25px 25px 0 0;
-    border: 3px solid #ff4d6d;
-    border-bottom: none;
-    position: relative;
-    display: flex;
-    padding-left: 25px;
-    gap: 15px;
-    box-sizing: border-box;
-}
-
-.van-window {
-    width: 45px;
-    height: 22px;
-    background: #a9def9;
-    border: 3px solid #ff4d6d;
-    border-radius: 5px;
-    margin-top: 8px;
-}
-
-.van-window.front {
-    border-radius: 12px 5px 5px 5px;
-}
-
-/* Phần dưới xe van (Màu hồng) */
-.van-bottom {
-    width: 100%;
-    height: 40px;
-    background: #ff85a2;
-    border: 3px solid #ff4d6d;
-    border-top: none;
-    border-radius: 0 0 15px 15px;
-    position: relative;
-    box-sizing: border-box;
-}
-
-/* Đèn xe */
-.van-light {
-    position: absolute;
-    right: 5px;
-    top: 10px;
-    width: 12px;
-    height: 12px;
-    background: #ffeb3b;
-    border: 3px solid #ff4d6d;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #ffeb3b;
-    box-sizing: border-box;
-}
-
-/* Cản trước xe */
-.van-bumper {
-    position: absolute;
-    right: -8px;
-    bottom: 5px;
-    width: 15px;
-    height: 8px;
-    background: #e2dcf2;
-    border: 3px solid #ff4d6d;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/* Bánh xe */
-.van-wheels {
-    position: absolute;
-    bottom: -15px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-.wheel {
-    width: 32px;
-    height: 32px;
-    background: #2b2b2b;
-    border: 3px solid #ff4d6d;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Hoạt ảnh quay bánh xe cho SVG */
+.wheel-group {
     animation: spin 0.6s linear infinite;
-    box-sizing: border-box;
 }
-
-.wheel-inner {
-    width: 12px;
-    height: 12px;
-    background: #ffffff;
-    border-radius: 50%;
-    position: relative;
-    box-sizing: border-box;
+.left-wheel {
+    transform-origin: 50px 74px;
 }
-
-/* Tạo nan hoa bánh xe để thấy hiệu ứng quay */
-.wheel-inner::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -3px;
-    width: 18px;
-    height: 2px;
-    background: #ff4d6d;
-    transform: translateY(-50%);
+.right-wheel {
+    transform-origin: 130px 74px;
 }
 
 @keyframes spin {

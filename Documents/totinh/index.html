@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <!-- Nhúng thư viện icon FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
     <!-- Màn hình Loading khi bấm Đồng ý -->
@@ -34,24 +34,49 @@
         <div class="drive-area">
             <div class="van-container" id="van-container">
                 <div class="dialog-bubble" id="dialog-bubble">Đang chở tình yêu đến đây... 🌸</div>
-                <div class="van-body">
-                    <div class="van-top">
-                        <div class="van-window front"></div>
-                        <div class="van-window back"></div>
-                    </div>
-                    <div class="van-bottom">
-                        <div class="van-light"></div>
-                        <div class="van-bumper"></div>
-                    </div>
-                </div>
-                <div class="van-wheels">
-                    <div class="wheel wheel-left">
-                        <div class="wheel-inner"></div>
-                    </div>
-                    <div class="wheel wheel-right">
-                        <div class="wheel-inner"></div>
-                    </div>
-                </div>
+                <!-- Xe van vẽ bằng SVG theo mẫu chuẩn của người dùng -->
+                <svg class="van-svg" viewBox="0 0 180 100" width="180" height="100">
+                    <!-- Khung xe phía trên (màu trắng) -->
+                    <path d="M 12 50 C 12 32, 20 18, 42 18 L 142 18 C 158 18, 168 32, 168 50 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3.5" />
+                    
+                    <!-- Khung xe phía dưới (màu hồng) -->
+                    <path d="M 12 50 L 168 50 C 168 62, 165 74, 155 74 L 148 74 C 148 64, 140 56, 130 56 C 120 56, 112 64, 112 74 L 68 74 C 68 64, 60 56, 50 56 C 40 56, 32 64, 32 74 L 20 74 C 12 74, 12 62, 12 50 Z" fill="#ff85a2" stroke="#2b2b2b" stroke-width="3.5" />
+                    
+                    <!-- Đường chỉ ngang phân chia màu -->
+                    <line x1="12" y1="50" x2="168" y2="50" stroke="#2b2b2b" stroke-width="3.5" />
+                    
+                    <!-- Các ô cửa sổ -->
+                    <!-- Ô sau -->
+                    <rect x="22" y="24" width="30" height="16" rx="4" fill="#a9def9" stroke="#2b2b2b" stroke-width="3" />
+                    <!-- Ô giữa -->
+                    <rect x="62" y="24" width="40" height="16" rx="4" fill="#a9def9" stroke="#2b2b2b" stroke-width="3" />
+                    <!-- Ô trước (kính chắn gió) -->
+                    <path d="M 112 24 L 144 24 C 151 24, 156 29, 158 35 L 160 40 L 112 40 Z" fill="#a9def9" stroke="#2b2b2b" stroke-width="3" />
+                    
+                    <!-- Đèn pha trước xe -->
+                    <circle cx="163" cy="58" r="6" fill="#ffeb3b" stroke="#2b2b2b" stroke-width="3" />
+                    
+                    <!-- Tay nắm cửa -->
+                    <rect x="110" y="55" width="8" height="3" rx="1.5" fill="#2b2b2b" />
+                    
+                    <!-- Bumper trước và sau -->
+                    <rect x="4" y="68" width="10" height="7" rx="3.5" fill="#e2dcf2" stroke="#2b2b2b" stroke-width="3" />
+                    <rect x="166" y="68" width="10" height="7" rx="3.5" fill="#e2dcf2" stroke="#2b2b2b" stroke-width="3" />
+                    
+                    <!-- Bánh xe bên trái (Quay được) -->
+                    <g class="wheel-group left-wheel">
+                        <circle cx="50" cy="74" r="14" fill="#2b2b2b" stroke="#ff4d6d" stroke-width="3" />
+                        <circle cx="50" cy="74" r="6" fill="#ffffff" />
+                        <line x1="44" y1="74" x2="56" y2="74" stroke="#ff4d6d" stroke-width="3" />
+                    </g>
+                    
+                    <!-- Bánh xe bên phải (Quay được) -->
+                    <g class="wheel-group right-wheel">
+                        <circle cx="130" cy="74" r="14" fill="#2b2b2b" stroke="#ff4d6d" stroke-width="3" />
+                        <circle cx="130" cy="74" r="6" fill="#ffffff" />
+                        <line x1="124" y1="74" x2="136" y2="74" stroke="#ff4d6d" stroke-width="3" />
+                    </g>
+                </svg>
             </div>
             <div class="exhaust-particles" id="exhaust-particles"></div>
             <div class="road-line"></div>
@@ -141,7 +166,6 @@
             <div id="success-message" class="success-message hidden">
                 <h3>Yaaay! 🥰</h3>
                 <p>Cảm ơn cậu đã đồng ý! Tớ hứa sẽ làm cậu cười mỗi ngày và yêu cậu thật nhiều! 💕</p>
-                <div class="love-date-counter" id="love-date-counter"></div>
             </div>
         </div>
     </div>
@@ -155,7 +179,7 @@
 
     <!-- Nhúng thư viện Three.js bản ổn định -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js?v=13"></script>
+    <script src="script.js?v=14"></script>
 </body>
 </html>
 
