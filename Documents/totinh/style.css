@@ -935,7 +935,7 @@ body, html {
 /* Bong bóng thoại trên xe van */
 .dialog-bubble {
     position: absolute;
-    bottom: 110px; /* Ở phía trên van container */
+    bottom: 215px; /* Điều chỉnh vị trí nổi trên nóc xe van cao hơn */
     left: 50%;
     transform: translateX(-50%);
     background: #ff4d6d;
@@ -968,10 +968,10 @@ body, html {
 /* Chiếc xe van vẽ bằng CSS */
 .van-container {
     position: absolute;
-    bottom: 25px;
-    left: -220px; /* Xuất phát ngoài màn hình bên trái */
-    width: 180px;
-    height: 100px;
+    bottom: -4px; /* Hạ thấp chân xe để bánh xe nằm khớp đường chạy */
+    left: -400px; /* Xuất phát sâu hơn ngoài màn hình bên trái do xe to hơn */
+    width: 360px; /* Tăng kích thước chiều rộng gấp đôi */
+    height: 200px; /* Tăng kích thước chiều cao gấp đôi */
     z-index: 10;
     animation: vanBobbing 0.2s infinite alternate;
 }
@@ -989,7 +989,7 @@ body, html {
 
 /* Hoạt ảnh quay bánh xe cho SVG */
 .wheel-group {
-    animation: spin 0.6s linear infinite;
+    animation: spin 1.2s linear infinite; /* Bánh xe quay chậm lại một nửa */
 }
 .left-wheel {
     transform-origin: 50px 74px;

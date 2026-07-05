@@ -1093,8 +1093,8 @@ function initUI() {
         const dialogBubble = document.getElementById('dialog-bubble');
         const exhaustParticles = document.getElementById('exhaust-particles');
         
-        // Reset xe van
-        vanContainer.style.left = '-220px';
+        // Reset xe van (Xuất phát xa hơn ở -400px do xe to gấp đôi)
+        vanContainer.style.left = '-400px';
         dialogBubble.style.opacity = '0';
         exhaustParticles.innerHTML = '';
         
@@ -1103,21 +1103,21 @@ function initUI() {
         
         // Cho xe chạy vào
         setTimeout(() => {
-            // Hiện bong bóng thoại trên xe van sau 0.8 giây
+            // Hiện bong bóng thoại trên xe van sau 1.5 giây (chạy chậm hơn nên hiện muộn hơn chút)
             setTimeout(() => {
                 dialogBubble.style.opacity = '1';
-            }, 800);
+            }, 1500);
             
-            // Bắt đầu tạo khói xe hình trái tim
+            // Bắt đầu tạo khói xe hình trái tim (giảm nhịp độ xuống 180ms do xe chạy chậm)
             let exhaustInterval = setInterval(() => {
                 createExhaustHeart();
-            }, 100);
+            }, 180);
             
-            // Chạy xe van từ trái sang phải
-            vanContainer.style.transition = 'left 3.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            // Chạy xe van từ trái sang phải chậm hơn (7 giây thay vì 3.5 giây)
+            vanContainer.style.transition = 'left 7s cubic-bezier(0.25, 0.8, 0.25, 1)';
             vanContainer.style.left = '100vw'; // Xe chạy qua mép phải màn hình
             
-            // Sau khi chạy xong xe van
+            // Sau khi chạy xong xe van (đợi 7 giây)
             setTimeout(() => {
                 clearInterval(exhaustInterval);
                 driveScreen.style.opacity = '0';
@@ -1133,15 +1133,15 @@ function initUI() {
                         successMessage.classList.remove('hidden');
                     });
                 }, 500);
-            }, 3500); // 3.5s khớp với transition
+            }, 7000); // 7s khớp với transition
         }, 100);
         
         // Hàm tạo hạt khói trái tim
         function createExhaustHeart() {
             const vanRect = vanContainer.getBoundingClientRect();
-            // Ống xả ở góc dưới bên trái của xe
-            const x = vanRect.left + 15;
-            const y = vanRect.top + 70;
+            // Ống xả của xe van to gấp đôi nằm ở khoảng cách +30px X và +140px Y
+            const x = vanRect.left + 30;
+            const y = vanRect.top + 140;
             
             // Chỉ tạo khói khi xe đang ở trên màn hình
             if (x < 0 || x > window.innerWidth) return;
