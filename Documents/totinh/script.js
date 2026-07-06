@@ -5,14 +5,21 @@ const CONFIG = {
     // Tên của người ấy
     crushName: "Cậu",
     
-    // Bức thư tỏ tình của bạn (Hỗ trợ xuống dòng bằng cách gõ bình thường)
-    confessionLetter: `Gửi cậu dễ thương của tớ,
+    confessionLetter: `Hmmmmm!
 
-Tớ đã muốn nói điều này với cậu từ lâu lắm rồi... 
-Từ khoảnh khắc đầu tiên ta gặp nhau, nụ cười của cậu đã làm lu mờ mọi ngôi sao trong vũ trụ của tớ. Tớ nhận ra mình muốn cùng cậu chia sẻ mọi niềm vui, nỗi buồn trong cuộc sống này.
+Gửi Wuyn Chauu,
 
-Hôm nay, giữa ngân hà lấp lánh này, tớ muốn lấy hết can đảm để hỏi cậu một điều:
-Cậu làm người yêu tớ nhé? 💖`,
+Đây là lần đầu tiên anh viết thư cho em - cũng là lần anh lo lắng nhiều nhất, anh khong giỏi nói lời đường mật nên là trong bức thư này anh chỉ muốn nói lời iu em bằng sự chân thành của mình thoiii :))
+
+Vô tình gặp gỡ, thích rồi iu, vốn dĩ không phải dự định từ trước, nhưng mà lại khiến anh rung động nhanh đến zay. Trước khi gặp em cuộc sống của anh thật nhàm chán và vô vị, anh luôn làm mọi thứ một mình và chẳng biết chia sẽ cùng ai cả.
+
+Nhưng mà trong vòng 2 tháng qua từ khi quen em cuộc sống của anh thay đổi nhiều, mọi thứ với anh trở nên yên bình, nhẹ nhàng, ý nghĩa hơn, mọi thứ dường như đều trở nên tốt đẹp hơn từ khi anh quen em.
+
+Mặc dù anh không phải người đầu tiên, không phải người đầu tiên nhắn tin cho em, không phải người đầu tiên em thích, cũng không phải sự lựa chọn duy nhất em có, lúc gặp em anh cũng chưa từng nghĩ mình sẽ là một điều gì đó quan trọng trong cuộc sống của em, cũng không phải điều không thể thiếu, nhưng mà đối với anh có lẽ sự xuất hiện của em đã là điều may mắn nhất mà anh có đượccc.
+
+Anh khong biết liệu những lời này có thể diễn tả hết tình cảm của anh dành cho em khong, anh biết em mạnh mẽ và độc lập, em có thể làm mọi thứ một mình và không cần ai giúp đỡ cả. Nhưng mà anh muốn em nhớ rằng nếu cảm thấy mệt mỏi, chán nản hay muốn có một người đồng hành thì anh vẫn luôn ở đây, ở phía sau dõi theo em và chưa từng có ý định rời đi.
+
+Vậy nên là nếu có thể anh muốn hạnh phúc của em có anh và luôn có anh ở trong đó, được khummmm?`,
 
     // Ngày bắt đầu yêu nhau (Nếu đồng ý, hệ thống sẽ tự động đếm ngày từ mốc này)
     loveStartDate: "2026-07-01", 
