@@ -866,6 +866,10 @@ function initUI() {
     // 1. Nhấp hộp quà mở đầu
     giftBox.addEventListener('click', () => {
         giftBox.classList.add('open');
+        
+        // Kích hoạt hiệu ứng pháo hoa hạt khi mở hộp
+        createGiftExplosion(giftBox);
+        
         // Kích hoạt phát nhạc khi có tương tác người dùng đầu tiên
         bgMusic.play().then(() => {
             musicToggle.classList.add('playing');
@@ -873,13 +877,13 @@ function initUI() {
             musicTooltip.classList.add('hidden');
         }).catch(err => console.log("Tự động phát nhạc bị trình duyệt chặn:", err));
         
-        // Fade out Intro Screen sau khi mở hộp quà
+        // Fade out Intro Screen sau khi mở hộp quà (tăng nhẹ thời gian lên 1.6s)
         setTimeout(() => {
             introScreen.style.opacity = '0';
             setTimeout(() => {
                 introScreen.classList.add('hidden');
             }, 1000);
-        }, 1200);
+        }, 1600);
     });
 
     // 2. Trình phát nhạc
@@ -1277,4 +1281,61 @@ photoViewer.addEventListener('click', (e) => {
         photoViewer.classList.remove('active');
     }
 });
+
+// Hàm tạo hiệu ứng pháo hoa hạt khi mở hộp quà chào mừng
+function createGiftExplosion(boxElement) {
+    const rect = boxElement.getBoundingClientRect();
+    // Lấy tọa độ trung tâm của hộp quà
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Danh sách icon pháo hoa bay ra
+    const icons = ['❤️', '💖', '✨', '⭐', '🎉', '🌸', '💕', '💗', '🎀'];
+    const particleCount = 40;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'gift-particle';
+        
+        // Chọn ngẫu nhiên emoji hoặc trái tim
+        particle.innerText = icons[Math.floor(Math.random() * icons.length)];
+        
+        // Random kích thước hạt từ 12px đến 28px
+        const size = 12 + Math.random() * 16;
+        particle.style.fontSize = size + 'px';
+        
+        // Vị trí xuất phát ở tâm hộp quà
+        particle.style.left = centerX + 'px';
+        particle.style.top = centerY + 'px';
+        particle.style.transform = 'translate(-50%, -50%) scale(0)';
+        particle.style.opacity = '1';
+        particle.style.transition = 'all 1.4s cubic-bezier(0.1, 0.8, 0.25, 1)';
+        
+        document.body.appendChild(particle);
+        
+        // Tính toán góc bắn và khoảng cách bay ngẫu nhiên
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 80 + Math.random() * 220;
+        const destX = centerX + Math.cos(angle) * distance;
+        // Cho hạt bay chéo lên trên một chút giống pháo hoa thực
+        const destY = centerY + Math.sin(angle) * distance - (30 + Math.random() * 70);
+        
+        // Góc xoay ngẫu nhiên từ -180 đến 180 độ
+        const rotation = -180 + Math.random() * 360;
+        const finalScale = 0.6 + Math.random() * 1.0;
+        
+        // Kích hoạt transition bằng requestAnimationFrame để mượt mà
+        requestAnimationFrame(() => {
+            particle.style.left = destX + 'px';
+            particle.style.top = destY + 'px';
+            particle.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${finalScale})`;
+            particle.style.opacity = '0';
+        });
+        
+        // Tự động giải phóng DOM sau khi hoàn tất transition
+        setTimeout(() => {
+            particle.remove();
+        }, 1400);
+    }
+}
 
