@@ -936,8 +936,16 @@ function initUI() {
         dots.forEach(dot => dot.classList.remove('active'));
         dots[currentSceneIndex].classList.add('active');
         
-        // Kích hoạt hộp thư tỏ tình ở Cảnh 5
+        // Kích hoạt hình nền của Cảnh 4 (Hình bạn gái) và Cảnh 5 (Lá thư)
+        const scene4Bg = document.getElementById('scene4-bg');
         const scene5Bg = document.getElementById('scene5-bg');
+        
+        if (currentSceneIndex === 3) {
+            if (scene4Bg) scene4Bg.classList.add('active');
+        } else {
+            if (scene4Bg) scene4Bg.classList.remove('active');
+        }
+        
         if (currentSceneIndex === 4) {
             confessionOverlay.classList.add('active');
             if (scene5Bg) scene5Bg.classList.add('active');
