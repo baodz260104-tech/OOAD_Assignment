@@ -953,10 +953,10 @@ function initUI() {
         if (currentSceneIndex === 4) {
             confessionOverlay.classList.add('active');
             if (scene5Bg) scene5Bg.classList.add('active');
-            // Hiển thị câu hỏi tỏ tình và căn giữa trước khi gõ thư
+            // Hiển thị câu hỏi tỏ tình trống (chỉ hiện Dear My Love) và căn giữa trước khi gõ thư
             const textElement = document.getElementById('typewriter-text');
             textElement.style.textAlign = 'center';
-            textElement.innerHTML = "Quỳnh Châu ơi, cậu đồng ý làm người yêu tớ nhé? 💖";
+            textElement.innerHTML = "";
             
             // Khôi phục nút Không về vị trí ban đầu trong card
             resetNoButton();
